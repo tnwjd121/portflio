@@ -1,0 +1,18 @@
+header : 좌측(로고_홈), 우측(Stacks, Project, Study)
+
+home :
+사진   내소개
+자격증
+경력 -> 그래프 인생연대기
+
+Stacks :
+기술스택
+
+Project : foodwave, Trip 팀프로젝트
+          랜딩페이지, 엔트리 => 개인 프로젝트
+
+Study : 학습 내용
+
+footer : email, git, insta 
+
+=> top 버튼 추가

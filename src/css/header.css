@@ -1,0 +1,17 @@
+#header-body{
+  top: 0;
+  height: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+#header-right{
+  display: flex;
+  justify-content: space-between;
+}
+#header-right div{
+  padding-left: 5vw;
+}

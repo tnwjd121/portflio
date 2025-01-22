@@ -1,3 +1,26 @@
 #footer-body{
-  
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(199, 199, 199, 0.514);
+  padding: 1vw 0;
+}
+#icon-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5vw;
+}
+#icon-list div{
+  padding: 0 0.5vw;
+}
+#footer-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer-text p {
+  margin: 0;
 }

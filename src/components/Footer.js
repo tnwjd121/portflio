@@ -6,13 +6,13 @@ import "../css/footer.css"
 
 export default function Footer() {
   return (
-    <div>
+    <div id='footer-body'>
       <div id='icon-list'>
         <div><MdOutlineMail /></div>
         <div><BsGithub /></div>
         <div><FaInstagram /></div>
       </div>
-      <div>
+      <div id='footer-text'>
         <p>© 2025 baek sujung. All rights reserved.</p>
         <p>Thank you for visiting my portfolio!</p>
       </div>

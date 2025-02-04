@@ -1,14 +1,26 @@
 header : 좌측(로고_홈), 우측(Stacks, Project, Study)
+=> 당연히 모바일 기준도 만들어야지 수정
 
 home :
 사진   내소개
-자격증
+<default 최근에 딴 순>
+자격증(표 필터 기능 만들기)
+자격증명
+certificationName
+발행기관
+issuingOrganization
+자격증번호
+certificationNumber
+취득년월일
+dateOfIssue
+
+
 경력 -> 그래프 인생연대기
 
 Stacks :
 기술스택
 
-Project : foodwave, Trip 팀프로젝트
+Project : foodwave, Trip 팀프로젝트const sortedData = response.data.sort((a, b) => new Date(b.dateOfIssue) - new Date(a.dateOfIssue));
           랜딩페이지, 엔트리 => 개인 프로젝트
 
 Study : 학습 내용
@@ -16,3 +28,10 @@ Study : 학습 내용
 footer : email, git, insta 
 
 => top 버튼 추가
+
+다시
+category :
+label:
+detail:
+startDate: 
+endDate

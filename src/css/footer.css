@@ -2,8 +2,9 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: rgba(199, 199, 199, 0.514);
+  background-color: rgb(228, 228, 228);
   padding: 1vw 0;
+  height: 5vw;
 }
 #icon-list{
   display: flex;

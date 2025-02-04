@@ -1,0 +1,67 @@
+{
+  "certifications":[
+    {
+      "id": "0",
+      "certificationName":"정보처리기능사(검정형)",
+      "issuingOrganization":"한국산업인력공단",
+      "certificationNumber":"17847550067B",
+      "dateOfIssue":"2017-07-05"
+    },
+    {
+      "id": "1",
+      "certificationName":"정보처리기사(검정형)",
+      "issuingOrganization":"한국산업인력공단",
+      "certificationNumber":"24202210483R",
+      "dateOfIssue":"2024-09-10"
+    },
+    {
+      "id": "2",
+      "certificationName":"SQL 개발자",
+      "issuingOrganization":"한국데이터산업진흥원",
+      "certificationNumber":"SQLD-054022176",
+      "dateOfIssue":"2024-09-20"
+    },
+    {
+      "id": "3",
+      "certificationName":"전산회계 1급",
+      "issuingOrganization":"한국세무사회",
+      "certificationNumber":"2107641506",
+      "dateOfIssue":"2018-02-22"
+    },
+    {
+      "id": "4",
+      "certificationName":"전산회계 2급",
+      "issuingOrganization":"한국세무사회",
+      "certificationNumber":"2256756993",
+      "dateOfIssue":"2016-09-07"
+    },
+    {
+      "id": "5",
+      "certificationName":"컴퓨터활용능력 2급",
+      "issuingOrganization":"대한상공회의소",
+      "certificationNumber":"16-K9-027453",
+      "dateOfIssue":"2016-04-29"
+    },
+    {
+      "id": "6",
+      "certificationName": "정보기술자격(ITQ) A등급 - 아래한글",
+      "issuingOrganization": "한국생산성본부",
+      "certificationNumber": "A001-2016107-004652",
+      "dateOfIssue": "2016-07-28"
+    },
+    {
+      "id": "7",
+      "certificationName": "정보기술자격(ITQ) A등급 - 한글엑셀",
+      "issuingOrganization": "한국생산성본부",
+      "certificationNumber": "A001-2016107-004652",
+      "dateOfIssue": "2017-06-29"
+    },
+    {
+      "id": "8",
+      "certificationName": "정보기술자격(ITQ) B등급 - 한글파워포인트",
+      "issuingOrganization": "한국생산성본부",
+      "certificationNumber": "A001-2016107-004652",
+      "dateOfIssue": "2016-12-15"
+    }
+  ]
+}

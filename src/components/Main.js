@@ -76,35 +76,22 @@ export default function Main() {
     return year + (month ? (month - 1) / 12 : 0);
   };
 
-
-
-
   return (
     <div id='body'>
       <div id='introduce-body'>
-        <div id='subtitle'>Introduce</div>
+        <div className='subtitle'>Introduce</div>
         <div id='introduce-container'>
           <div id='introduce-container-left'>
             <img src={require('../imgs/포트폴리오사진.jpg')}></img>
           </div>
           <div id='introduce-container-right'>
-            <table>
-              <tbody>
-                <tr>
-                  <td>Name</td>
-                  <td>백수정</td>
-                </tr>
-                <tr>
-                  <td>About me</td>
-                  <td>IT기업에서 5년 동안 마케팅 및 영업지원 업무를 담당하다가  내부 실적관리 프로그램 기획자로 참여 후 백엔드 개발에 관심이 생겨 백엔드 개발자로 전향하게 되었습니다.</td>
-                </tr>
-              </tbody>
-            </table>
+            <div id='introduce-container-right-title'>안녕하세요? 풀스택 개발자 백수정입니다.</div>
+            <div id='introduce-container-right-text'>저는 호기심이 많은 성격으로, 흥미로운 주제를 접할 때마다 깊이 탐구하고 새로운 지식을 습득하는 것을 즐깁니다. IT 기업에서 실적 관리 업무를 맡던 중, 내부 실적 관리 프로그램의 기획자로 참여하면서 개발 분야에 대해 자연스럽게 관심을 갖게 되었습니다. 끊임없이 발전하는 기술 환경 속에서 새로운 것을 배워나가는 과정이 저에게 큰 흥미를 주었고, 저의 성향과도 잘 맞는다고 느껴 풀스택 개발자로의 전향을 결심하게 되었습니다.</div>
           </div>
         </div>
       </div>
       <div id='certification-body'>
-        <div>Certification</div>
+        <div className='subtitle'>Certification</div>
         <table>
           <thead>
             <tr>

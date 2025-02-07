@@ -16,3 +16,18 @@ code {
   font-family: "amarillo";
   src: url(../src/fonts/Amarillo.otf);
 }
+
+@font-face {
+  font-family: "lineseedkrbd";
+  src: url(../src/fonts/LINESeedKR-Bd.otf);
+}
+
+@font-face {
+  font-family: "lineseedkrrg";
+  src: url(../src/fonts/LINESeedKR-Rg.otf);
+}
+
+@font-face {
+  font-family: "lineseedkrth";
+  src: url(../src/fonts/LINESeedKR-Th.otf);
+}

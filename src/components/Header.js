@@ -8,9 +8,9 @@ export default function Header() {
         <div id='logo'>100mlwater</div>
       </div>
       <div id='header-right'>
-        <div>Stacks</div>
-        <div>Project</div>
-        <div>Study</div>
+        <div className='header-menu'>Stacks</div>
+        <div className='header-menu'>Project</div>
+        <div className='header-menu'>Study</div>
       </div>
     </div>
   )

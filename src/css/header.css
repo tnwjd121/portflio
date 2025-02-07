@@ -1,6 +1,7 @@
+
 #header-body{
   top: 0;
-  height: 3vw;
+  height: 8vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,12 +11,25 @@
 #logo{
   font-family: "amarillo";
   color: #03aec5;
+  font-size: 13px;
 }
 
 #header-right{
   display: flex;
   justify-content: space-between;
+  font-size: 13px;
+  color: #3b3b3b;
+  font-family: 'lineseedkrbd';
 }
+
 #header-right div{
-  padding-left: 5vw;
+  padding-left: 1.8vw;
+}
+
+.header-menu:hover {
+  color: #03aec5;
+}
+.first-row{
+  width: 85px;
+  text-align: center;
 }

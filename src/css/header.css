@@ -11,13 +11,13 @@
 #logo{
   font-family: "amarillo";
   color: #03aec5;
-  font-size: 13px;
+  font-size: 18px;
 }
 
 #header-right{
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 18px;
   color: #3b3b3b;
   font-family: 'lineseedkrbd';
 }

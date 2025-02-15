@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import '../css/main.css'
 import axios from 'axios';
+import { FaSort } from "react-icons/fa";
+import { FaSortUp } from "react-icons/fa";
+import { FaSortDown } from "react-icons/fa";
 
 export default function Main() {
   const API_URL = "http://localhost:5000"
 
   const [certificationData, setCertificationData] = useState([]);
+  const [sortConfig, setSortConfig] = useState({key: null, direction: "asc"})
+
+  const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
     certificationList()
+    chartList()
   }, [])
-
-  useEffect(() => {
-  }, [certificationData]);
-
 
 
   const certificationList = async () => {
@@ -27,49 +30,46 @@ export default function Main() {
     }
   }
 
+  // 표 정렬 기능
+  const handleSort = (key) => {
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc"
+    }
+    
+    const sortedData = [...certificationData].sort((a,b) => {
+      if (a[key] < b[key]) return direction === "asc" ? -1 : 1;
+      if (a[key] > b[key]) return direction === "asc" ? 1 : -1;
+      return 0;
+      
+    })
+    setCertificationData(sortedData);
+    setSortConfig({key, direction})
+  }
+    
+  const getSortIcon = (columnKey) => {
+    if (sortConfig.key === columnKey) {
+      return sortConfig.direction === "asc" ? <FaSortUp /> : <FaSortDown />;
+    }
+    return <FaSort />;
+  };
+
   const currentYear = new Date().getFullYear();
   const startYear = 2016;
   const yearsRange = Array.from({length: currentYear - startYear + 1}, (_,i) => startYear + i);
 
-  const data = [
-    {
-      "category" : "경력",
-      "label" : "더존비즈온",
-      "detail" : "영업기획팀",
-      "startDate" : "2018.11",
-      "endDate" : "2023.08"
-    },
-    {
-      "category" : "경력",
-      "label" : "IBK저축은행",
-      "detail" : "D-IT지원부",
-      "startDate" : "2024.10",
-      "endDate" : "2025.01"
-    },
-    {
-      "category" : "학력",
-      "label" : "경희사이버대학교",
-      "detail" : "마케팅경영리더십학과, 컴퓨터정보통신학과",
-      "startDate" : "2021.03",
-      "endDate" : "2024.02"
-    },
-    {
-      "category" : "학력",
-      "label" : "부산세무고등학교",
-      "detail" : "국제통상무역학과",
-      "startDate" : "2016.03",
-      "endDate" : "2019.02"
-    },
-    {
-      "category" : "교육",
-      "label" : "코리아IT아카데미",
-      "detail" : "빅데이터 분석 및 웹 개발 등",
-      "startDate" : "2023.07",
-      "endDate" : "2024.07"
-    },
-  ];
+  const chartList = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/charts`);
+      setChartData(response.data);
+      
+    } catch (error) {
+      console.error("에러 발생", error)
+    }
+  }
 
-  const categories = [...new Set(data.map(item => item.category))];
+
+  const categories = [...new Set(chartData.map(item => item.category))];
 
   const parseYear = (dateStr) => {
     const [year, month] = dateStr.split('.').map(Number);
@@ -92,18 +92,20 @@ export default function Main() {
       </div>
       <div id='certification-body'>
         <div className='subtitle'>Certification</div>
-        <table>
+        <table id='certification-table'>
           <thead>
             <tr>
-              <td>자격명</td>
-              <td>발행기관</td>
-              <td>자격증번호</td>
-              <td>취득년월일</td>
+              <td id='row-first'>No.</td>
+              <td id='row-second' onClick={() => handleSort("certificationName")}>자격명 {getSortIcon("certificationName")}</td>
+              <td id='row-third' onClick={() => handleSort("issuingOrganization")}>발행기관 {getSortIcon("issuingOrganization")}</td>
+              <td id='row-four' onClick={() => handleSort("certificationNumber")}>자격증번호 {getSortIcon("certificationNumber")}</td>
+              <td id='row-five' onClick={() => handleSort("dateOfIssue")}>취득년월일 {getSortIcon("dateOfIssue")}</td>
             </tr>
           </thead>
           <tbody>
             {certificationData.map((cert, index) => (
               <tr key={index}>
+                <td>{index+1}</td>
                 <td>{cert.certificationName}</td>
                 <td>{cert.issuingOrganization}</td>
                 <td>{cert.certificationNumber}</td>
@@ -115,19 +117,20 @@ export default function Main() {
         </table>
       </div>
       <div id="chart-body">
+      <div className='subtitle'>null</div>
       <svg  id='chart-container'>
         {/* X축 (연도) */}
         {yearsRange.map((year, index) => (
-          <text key={year} x={100 + index * 75} y="350" textAnchor="middle" fontSize="12">{year}</text>
+          <text key={year} x={100+ index * 75} y="350" textAnchor="middle" fontSize="14" style={{ fontFamily: 'lineseedkrrg' }} fill='#666666'>{year}</text>
         ))}
 
         {/* Y축 (카테고리) */}
         {categories.map((category, index) => (
-          <text key={category} x="75" y={index * 80 + 100} textAnchor="end" fontSize="14">{category}</text>
+          <text key={category} x="75" y={index * 80 + 100} textAnchor="end" fontSize="16" style={{ fontFamily: 'lineseedkrrg' }} fill='#666666'>{category}</text>
         ))}
 
         {/* 막대 그래프 */}
-        {data.map((item, index) => {
+        {chartData.map((item, index) => {
           const y = categories.indexOf(item.category) * 80 + 90;
           const xStart = 100 + (parseYear(item.startDate) - startYear) * 75;
           const xEnd = 100 + (parseYear(item.endDate) - startYear) * 75;
@@ -135,16 +138,65 @@ export default function Main() {
 
           return (
             <g key={index}>
-              {/* 텍스트 정보 */}
-              <text x={xStart + width / 2} y={y - 40} textAnchor="middle" fontSize="12" fontWeight="bold" fill="black">{item.label}</text>
-              <text x={xStart + width / 2} y={y - 25} textAnchor="middle" fontSize="10" fill="black">{item.detail}</text>
-              <text x={xStart + width / 2} y={y - 15} textAnchor="middle" fontSize="10">{item.startDate} ~ {item.endDate}</text>
-              {/* 막대 */}
-              <rect x={xStart} y={y} width={width} height="5" fill="steelblue" strokeWidth="1" />
+              <text x={xStart + width / 2} y={y - 35} textAnchor="middle" fontSize="14" fontWeight="bold" fill="black">{item.label}</text>
+              <text x={xStart + width / 2} y={y - 20} textAnchor="middle" fontSize="12" fill="black">{item.detail}</text>
+              <text x={xStart + width / 2} y={y - 5} textAnchor="middle" fontSize="12">{item.startDate} ~ {item.endDate}</text>
+              <rect x={xStart} y={y} width={width} height="8" fill="#03aec5" strokeWidth="1" />
             </g>
           );
         })}
       </svg>
+      </div>
+      <div id='stack-body'>
+      <div className='subtitle'>Stacks</div>
+        <div id='stack-container'>
+          <div className='stack-box'>
+            <div className='stack-box-title'>Java</div>
+            <div className='stack-box-detail'>
+              <ul>
+                <li>웹 사이트 및 콘솔 프로그램을 개발</li>
+                <li>Spring Boot를 활용하여 RESTful API를 설계하고 구현</li>
+                <li>Maven과 Gradle을 사용하여 의존성 관리</li>
+                <li>Spring Security를 활용하여 애플리케이션의 인증과 권한 부여 구현</li>
+              </ul>
+            </div>
+          </div>
+          <div className='stack-box'>
+            <div className='stack-box-title'>Python</div>
+            <div className='stack-box-detail'>
+              <ul>
+                <li>다양한 라이브러리와 도구를 활용하여 빅데이터 예측 및 분류</li>
+              </ul>
+            </div>
+          </div>
+          <div className='stack-box'>
+            <div className='stack-box-title'>HTML/CSS/JS/TS</div>
+            <div className='stack-box-detail'>
+              <ul>
+                <li>웹프론트엔드 프로그램을 개발</li>
+                <li>목서버를 사용하여 API 호출 테스트</li>
+                <li>React를 사용하여 반응형 웹 애플리케이션 개발</li>
+              </ul>
+            </div>
+          </div>
+          <div className='stack-box'>
+            <div className='stack-box-title'>SQL</div>
+            <div className='stack-box-detail'>
+              <ul>
+                <li>데이터베이스 삽입, 삭제, 갱신, 삭제</li>
+                <li>데이터베이스 SQL 쿼리 작성하여 검색 및 조작</li>
+              </ul>
+            </div>
+          </div>
+          <div className='stack-box'>
+            <div className='stack-box-title'>Git</div>
+            <div className='stack-box-detail'>
+              <ul>
+                <li>프로젝트 버전 관리 및 협업 도구로 활용</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

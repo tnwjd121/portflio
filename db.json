@@ -63,5 +63,42 @@
       "certificationNumber": "A001-2016107-004652",
       "dateOfIssue": "2016-12-15"
     }
+  ],
+  "charts":[
+    {
+      "category" : "경력",
+      "label" : "더존비즈온",
+      "detail" : "영업기획팀",
+      "startDate" : "2018.11",
+      "endDate" : "2023.08"
+    },
+    {
+      "category" : "경력",
+      "label" : "IBK저축은행",
+      "detail" : "D-IT지원부",
+      "startDate" : "2024.10",
+      "endDate" : "2025.01"
+    },
+    {
+      "category" : "학력",
+      "label" : "경희사이버대학교",
+      "detail" : "마케팅경영리더십학과, 컴퓨터정보통신학과",
+      "startDate" : "2021.03",
+      "endDate" : "2024.02"
+    },
+    {
+      "category" : "학력",
+      "label" : "부산세무고등학교",
+      "detail" : "국제통상무역학과",
+      "startDate" : "2016.03",
+      "endDate" : "2019.02"
+    },
+    {
+      "category" : "교육",
+      "label" : "코리아IT아카데미",
+      "detail" : "빅데이터 분석 및 웹 개발 등",
+      "startDate" : "2023.07",
+      "endDate" : "2024.07"
+    }
   ]
 }
